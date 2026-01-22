@@ -4,7 +4,6 @@ on:
   # ⚡ Schedule principal
   schedule:
     - cron: '*/10 * * * *'  # A cada 10 minutos
- 
 jobs:
   gerar-completo:
     runs-on: ubuntu-latest

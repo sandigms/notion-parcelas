@@ -1,0 +1,28 @@
+name: 🧪 TESTE - Gerador Completo
+
+on:
+  workflow_dispatch:  # Só roda manualmente
+
+jobs:
+  teste-completo:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Baixar código
+        uses: actions/checkout@v3
+      
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: 📦 Instalar dependências
+        run: pip install -r requirements.txt
+      
+      - name: 🧪 Executar teste completo
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: python gerador_completo.py
+      
+      - name: ✅ Teste concluído
+        run: echo "Teste do sistema completo finalizado!"

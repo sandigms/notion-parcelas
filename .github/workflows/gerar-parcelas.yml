@@ -1,0 +1,32 @@
+name: 🚀 Gerar Parcelas Notion
+
+on:
+  schedule:
+    # Roda todos os dias às 8h (ajuste como quiser)
+    - cron: '0 8 * * *'
+  
+  workflow_dispatch:  # Permite rodar manualmente
+
+jobs:
+  gerar-parcelas:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Baixar código
+        uses: actions/checkout@v3
+      
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: 📦 Instalar dependências
+        run: pip install -r requirements.txt
+      
+      - name: 🚀 Executar gerador de parcelas
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: python gerador_parcelas.py
+      
+      - name: ✅ Finalizado
+        run: echo "Processamento de parcelas concluído!"

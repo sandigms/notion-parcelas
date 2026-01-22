@@ -1,9 +1,20 @@
 name: 🔗 Gerador Completo com Relacionamento
 
 on:
+  # ⚡ Schedule principal
   schedule:
-    - cron: '*/10 * * * *'  # ⚡ A CADA 10 MINUTOS TAMBÉM!
+    - cron: '*/10 * * * *'  # A cada 10 minutos
+  
+  # 🎯 Trigger manual
   workflow_dispatch:
+  
+  # 🔥 MANTÉM REPOSITÓRIO ATIVO (CRÍTICO!)
+  push:
+    branches: [main]
+  
+  # 💡 Também mantém ativo
+  pull_request:
+    branches: [main]
 
 jobs:
   gerar-completo:
@@ -28,3 +39,6 @@ jobs:
       
       - name: ✅ Concluído
         run: echo "Geração completa com relacionamento concluída!"
+
+        name: 🔗 Gerador Completo com Relacionamento
+

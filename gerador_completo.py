@@ -307,7 +307,7 @@ def criar_parcelas_para_cliente(cliente):
     
     # Criar parcelas faltantes
     for i in range(parcelas_existentes + 1, qtd_parcelas + 1):
-        dias_para_vencimento = 30 * (i - 1)
+        dias_para_vencimento = 30 * i 
         data_vencimento = data_emprestimo + timedelta(days=dias_para_vencimento)
         
         id_parcela = f"{nome_cliente[:3].upper()}-{cliente_id[-4:]}-{i}"

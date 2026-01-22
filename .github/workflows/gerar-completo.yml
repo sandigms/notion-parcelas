@@ -4,18 +4,7 @@ on:
   # ⚡ Schedule principal
   schedule:
     - cron: '*/10 * * * *'  # A cada 10 minutos
-  
-  # 🎯 Trigger manual
-  workflow_dispatch:
-  
-  # 🔥 MANTÉM REPOSITÓRIO ATIVO (CRÍTICO!)
-  push:
-    branches: [main]
-  
-  # 💡 Também mantém ativo
-  pull_request:
-    branches: [main]
-
+ 
 jobs:
   gerar-completo:
     runs-on: ubuntu-latest

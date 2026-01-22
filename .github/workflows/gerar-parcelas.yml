@@ -1,13 +1,12 @@
-name: 🚀 Gerar Parcelas Notion
+name: 🧱 Gerador de Parcelas Básico  # ← NOME ALTERADO
 
 on:
   schedule:
-     - cron: '*/10 * * * *'  # A cada 10 minutos
-  
-  workflow_dispatch:  # Permite rodar manualmente
+    - cron: '*/10 * * * *'  # A cada 10 minutos
+  workflow_dispatch:
 
 jobs:
-  gerar-parcelas:
+  gerar-parcelas-basico:  # ← NOME DO JOB ALTERADO
     runs-on: ubuntu-latest
     
     steps:
@@ -22,10 +21,10 @@ jobs:
       - name: 📦 Instalar dependências
         run: pip install -r requirements.txt
       
-      - name: 🚀 Executar gerador de parcelas
+      - name: 🧱 Executar gerador básico  # ← NOME ALTERADO
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-        run: python gerador_parcelas.py
+        run: python gerador_parcelas.py  # ← Script básico
       
-      - name: ✅ Finalizado
-        run: echo "Processamento de parcelas concluído!"
+      - name: ✅ Concluído
+        run: echo "Geração básica de parcelas concluída!"

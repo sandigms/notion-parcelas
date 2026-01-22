@@ -2,8 +2,7 @@ name: 🚀 Gerar Parcelas Notion
 
 on:
   schedule:
-    # Roda todos os dias às 8h (ajuste como quiser)
-    - cron: '0 8 * * *'
+     - cron: '*/10 * * * *'  # A cada 10 minutos
   
   workflow_dispatch:  # Permite rodar manualmente
 

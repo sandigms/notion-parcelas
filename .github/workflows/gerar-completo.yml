@@ -1,0 +1,30 @@
+name: 🔗 Gerador Completo com Relacionamento
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # ⚡ A CADA 10 MINUTOS TAMBÉM!
+  workflow_dispatch:
+
+jobs:
+  gerar-completo:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Baixar código
+        uses: actions/checkout@v3
+      
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: 📦 Instalar dependências
+        run: pip install -r requirements.txt
+      
+      - name: 🔗 Executar gerador completo
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: python gerador_completo.py  # ← Script completo
+      
+      - name: ✅ Concluído
+        run: echo "Geração completa com relacionamento concluída!"

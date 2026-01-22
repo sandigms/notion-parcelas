@@ -1,0 +1,36 @@
+name: Atualização Diária Notion
+
+on:
+  # Roda todo dia às 8:00 AM (horário UTC)
+  schedule:
+    - cron: '0 8 * * *'
+  
+  # Permite rodar manualmente também
+  workflow_dispatch:
+  
+  # Opcional: roda quando você faz push no código
+  push:
+    branches: [main]
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+    
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Instalar dependências
+      run: |
+        pip install requests
+    
+    - name: Rodar script de automação
+      env:
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      run: |
+        python seu_script.py  # Substitua pelo nome do seu arquivo Python
